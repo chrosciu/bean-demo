@@ -9,6 +9,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import pl.com.sages.beandemo.http.HttpClient;
 import pl.com.sages.beandemo.service.BookService;
 import pl.com.sages.beandemo.service.CalculatorService;
+import pl.com.sages.beandemo.service.UnreliableService;
 
 @SpringBootApplication
 @Slf4j
@@ -20,15 +21,17 @@ public class BeanDemoApplication implements CommandLineRunner {
     private final BookService modernBookService;
     private final HttpClient httpClient;
     private final CalculatorService calculatorService;
+    private final UnreliableService unreliableService;
 
     public BeanDemoApplication(
             @Qualifier(value = "bookServiceImpl") BookService bookService,
             @Qualifier(value = "modern") BookService modernBookService,
-            HttpClient httpClient, CalculatorService calculatorService) {
+            HttpClient httpClient, CalculatorService calculatorService, UnreliableService unreliableService) {
         this.bookService = bookService;
         this.modernBookService = modernBookService;
         this.httpClient = httpClient;
         this.calculatorService = calculatorService;
+        this.unreliableService = unreliableService;
     }
 
     public static void main(String[] args) {
@@ -47,5 +50,7 @@ public class BeanDemoApplication implements CommandLineRunner {
         log.info("{}", calculatorService.divide(3, 4));
 
         log.info("{}", calculatorService.divide(3, 0));
+
+        log.info("{}", unreliableService.execute());
     }
 }
