@@ -6,6 +6,8 @@ import lombok.ToString;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 @ConfigurationProperties(prefix = "modern-book-service-props")
 @Setter
@@ -14,5 +16,6 @@ import org.springframework.stereotype.Component;
 public class ModernBookServiceProperties {
     private String address;
     private int rating;
+    private List<String> authors;
 
 }

@@ -18,5 +18,5 @@ import java.util.List;
 public class BookServiceProperties {
     int rating;
     String extendedDescription;
-    List<Book> books = new ArrayList<>();
+    List<Book> books;
 }
