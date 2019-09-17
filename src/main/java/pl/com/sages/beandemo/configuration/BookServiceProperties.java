@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 import pl.com.sages.beandemo.model.Book;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +21,8 @@ import java.util.List;
 @ToString
 @Validated
 public class BookServiceProperties {
+    @Min(10)
+    @Max(20)
     int rating;
     @NotBlank
     String extendedDescription;
