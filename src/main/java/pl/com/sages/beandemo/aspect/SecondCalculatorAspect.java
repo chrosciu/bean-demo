@@ -16,7 +16,7 @@ public class SecondCalculatorAspect {
     @Around("execution(* pl.com.sages.beandemo.service.CalculatorService.*(..))")
     public Object aroundAnyCalculatorOperation(ProceedingJoinPoint joinPoint) throws Throwable {
         log.info("Before around calculator operation");
-        //Object rv = joinPoint.proceed();
+        Object rv = joinPoint.proceed();
         log.info("After around calculator operation");
         return Double.valueOf(-1);
     }
