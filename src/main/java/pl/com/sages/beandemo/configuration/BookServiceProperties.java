@@ -5,6 +5,10 @@ import lombok.Setter;
 import lombok.ToString;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
+import pl.com.sages.beandemo.model.Book;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 @ConfigurationProperties(prefix = "book-service-props")
@@ -14,4 +18,5 @@ import org.springframework.stereotype.Component;
 public class BookServiceProperties {
     int rating;
     String extendedDescription;
+    List<Book> books = new ArrayList<>();
 }
