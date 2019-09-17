@@ -5,27 +5,30 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import pl.com.sages.beandemo.http.HttpClient;
-import pl.com.sages.beandemo.http.MovieDownloader;
-import pl.com.sages.beandemo.http.MusicDownloader;
 import pl.com.sages.beandemo.service.BookService;
+import pl.com.sages.beandemo.service.CalculatorService;
 
 @SpringBootApplication
 @Slf4j
 //@RequiredArgsConstructor
+@EnableAspectJAutoProxy
 public class BeanDemoApplication implements CommandLineRunner {
 
     private final BookService bookService;
     private final BookService modernBookService;
     private final HttpClient httpClient;
+    private final CalculatorService calculatorService;
 
     public BeanDemoApplication(
             @Qualifier(value = "bookServiceImpl") BookService bookService,
             @Qualifier(value = "modern") BookService modernBookService,
-            HttpClient httpClient) {
+            HttpClient httpClient, CalculatorService calculatorService) {
         this.bookService = bookService;
         this.modernBookService = modernBookService;
         this.httpClient = httpClient;
+        this.calculatorService = calculatorService;
     }
 
     public static void main(String[] args) {
@@ -39,5 +42,10 @@ public class BeanDemoApplication implements CommandLineRunner {
         log.info("{}", httpClient);
 
         //var httpClient = HttpClientFactory.create();
+
+        log.info("{}", calculatorService.multiply(7, 8));
+        log.info("{}", calculatorService.divide(3, 4));
+
+        log.info("{}", calculatorService.divide(3, 0));
     }
 }
