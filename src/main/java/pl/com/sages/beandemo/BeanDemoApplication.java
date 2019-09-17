@@ -1,15 +1,14 @@
 package pl.com.sages.beandemo;
 
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import pl.com.sages.beandemo.http.HttpClient;
-import pl.com.sages.beandemo.http.HttpClientFactory;
+import pl.com.sages.beandemo.http.MovieDownloader;
+import pl.com.sages.beandemo.http.MusicDownloader;
 import pl.com.sages.beandemo.service.BookService;
-import pl.com.sages.beandemo.service.impl.BookServiceImpl;
 
 @SpringBootApplication
 @Slf4j
